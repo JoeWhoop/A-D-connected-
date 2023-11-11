@@ -41,4 +41,37 @@ document.getElementById("goButton").addEventListener("click", function () {
         alert("Please select both a mechanic and a station before clicking Go.");
     }
 });
-A
+
+// Function to populate "Znajdz siebie" dropdown based on the selected line
+function populateMechanicDropdown(selectedLine) {
+    var mechanicDropdown = document.getElementById("mechanicDropdown");
+    var mechanics = [];
+
+    // Mechanics for A line
+    if (selectedLine === "A") {
+        mechanics = ["Adam Radzikowski", "Anton Pratasau", "Bartosz Płoszaj", "Dominik Chojnowski", "Maciej Chwil", "Szymon Niezgoda", "Szymon Staniszewski", "Wiktor Kaczkowski"];
+    }
+    // Mechanics for D line
+    else if (selectedLine === "D") {
+        mechanics = ["Aleks Czarnecki", "Bartosz Kędra", "Hubert Jakubowski", "Kacper Wydra", "Łukasz Chojecki", "Mateusz Wiatr", "Stanislav Tymchenko", "Weronika Szałowska", "Sebastian Widuliński", "Łukasz Markowski", "Kacper Maciejczuk", "Maciej Stępniak"];
+    }
+
+    // Clear existing options
+    mechanicDropdown.innerHTML = "";
+
+    // Populate mechanic dropdown
+    mechanics.forEach(function (mechanic) {
+        var option = document.createElement("option");
+        option.value = mechanic.replace(" ", "_").toUpperCase();
+        option.label = mechanic;
+        mechanicDropdown.appendChild(option);
+    });
+}
+
+// Initial population of "Znajdz siebie" dropdown
+populateMechanicDropdown(document.getElementById("liniaDropdown").value);
+
+// Update the "Znajdz siebie" dropdown when the line changes
+document.getElementById("liniaDropdown").addEventListener("change", function () {
+    populateMechanicDropdown(document.getElementById("liniaDropdown").value);
+});
