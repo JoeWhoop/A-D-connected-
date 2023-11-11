@@ -1,46 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Znajdz siebie</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose an Option</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Linia:</h1>
-        <select id="liniaDropdown">
-            <option value="A">A</option>
-            <option value="D">D</option>
-        </select>
+    <h1>Znajdz siebie:</h1>
+    <select id="mechanicDropdown" size="6">
+        <!-- Mechanics for A line -->
+        <option value="Adam Radzikowski" label="Adam Radzikowski">Adam Radzikowski</option>
+        <option value="Anton Pratasau" label="Anton Pratasau">Anton Pratasau</option>
+        <option value="Bartosz Płoszaj" label="Bartosz Płoszaj">Bartosz Płoszaj</option>
+        <option value="Dominik Chojnowski" label="Dominik Chojnowski">Dominik Chojnowski</option>
+        <option value="Maciej Chwil" label="Maciej Chwil">Maciej Chwil</option>
+        <option value="Szymon Niezgoda" label="Szymon Niezgoda">Szymon Niezgoda</option>
+        <option value="Szymon Staniszewski" label="Szymon Staniszewski">Szymon Staniszewski</option>
+        <option value="Wiktor Kaczkowski" label="Wiktor Kaczkowski">Wiktor Kaczkowski</option>
 
-        <h1>Stacja:</h1>
-        <select id="stationDropdown" size="6">
-            <!-- Options for D line -->
-            <option value="D0" label="D0">D0</option>
-            <option value="D1" label="D1">D1</option>
-            <option value="D2" label="D2">D2</option>
-            <option value="D3" label="D3">D3</option>
-            <option value="D4" label="D4">D4</option>
-        </select>
+        <!-- Mechanics for D line -->
+        <option value="Aleks Czarnecki" label="Aleks Czarnecki">Aleks Czarnecki</option>
+        <option value="Bartosz Kędra" label="Bartosz Kędra">Bartosz Kędra</option>
+        <option value="Hubert Jakubowski" label="Hubert Jakubowski">Hubert Jakubowski</option>
+        <option value="Kacper Wydra" label="Kacper Wydra">Kacper Wydra</option>
+        <option value="Łukasz Chojecki" label="Łukasz Chojecki">Łukasz Chojecki</option>
+        <option value="Mateusz Wiatr" label="Mateusz Wiatr">Mateusz Wiatr</option>
+        <option value="Stanislav Tymchenko" label="Stanislav Tymchenko">Stanislav Tymchenko</option>
+        <option value="Weronika Szałowska" label="Weronika Szałowska">Weronika Szałowska</option>
+        <option value="Sebastian Widuliński" label="Sebastian Widuliński">Sebastian Widuliński</option>
+        <option value="Łukasz Markowski" label="Łukasz Markowski">Łukasz Markowski</option>
+        <option value="Kacper Maciejczuk" label="Kacper Maciejczuk">Kacper Maciejczuk</option>
+        <option value="Maciej Stępniak" label="Maciej Stępniak">Maciej Stępniak</option>
+    </select>
 
-        <h1>Znajdz siebie:</h1>
-        <select id="mechanicDropdown" size="6">
-            <!-- Options for D line -->
-            <option value="Aleks_Czarnecki" label="Aleks Czarnecki">Aleks Czarnecki</option>
-            <option value="Bartosz_Kędra" label="Bartosz Kędra">Bartosz Kędra</option>
-            <option value="Hubert_Jakubowski" label="Hubert Jakubowski">Hubert Jakubowski</option>
-            <option value="Kacper_Wydra" label="Kacper Wydra">Kacper Wydra</option>
-            <option value="Łukasz_Chojecki" label="Łukasz Chojecki">Łukasz Chojecki</option>
-            <option value="Mateusz_Wiatr" label="Mateusz Wiatr">Mateusz Wiatr</option>
-            <option value="Stanislav_Tymchenko" label="Stanislav Tymchenko">Stanislav Tymchenko</option>
-            <option value="Weronika_Szałowska" label="Weronika Szałowska">Weronika Szałowska</option>
-            <option value="Sebastian_Widuliński" label="Sebastian Widuliński">Sebastian Widuliński</option>
-            <option value="Łukasz_Markowski" label="Łukasz Markowski">Łukasz Markowski</option>
-            <option value="Kacper_Maciejczuk" label="Kacper Maciejczuk">Kacper Maciejczuk</option>
-            <option value="Maciej_Stępniak" label="Maciej Stępniak">Maciej Stępniak</option>
-        </select>
+    <h1>Choose a Line:</h1>
+    <select id="liniaDropdown">
+        <option value="A">A</option>
+        <option value="D">D</option>
+    </select>
 
-        <button id="goButton">Go</button>
-    </div>
+    <h1>Choose a Station:</h1>
+    <select id="stationDropdown">
+        <option value="A1" label="A1">A1</option>
+        <option value="A2" label="A2">A2</option>
+        <option value="A3" label="A3">A3</option>
+        <option value="A4" label="A4">A4</option>
+        <option value="A5" label="A5">A5</option>
+        <option value="A6" label="A6">A6</option>
+        <option value="D0" label="D0">D0</option>
+        <option value="D1" label="D1">D1</option>
+        <option value="D2" label="D2">D2</option>
+        <option value="D3" label="D3">D3</option>
+        <option value="D4" label="D4">D4</option>
+    </select>
+
+    <button id="goButton">Go</button>
 
     <script src="main.js"></script>
 </body>
