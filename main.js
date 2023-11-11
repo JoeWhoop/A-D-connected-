@@ -1,33 +1,38 @@
-// JavaScript to handle button click and dropdown options
 document.getElementById("goButton").addEventListener("click", function () {
+    var selectedMechanic = document.getElementById("mechanicDropdown").value;
+    var selectedStation = document.getElementById("stationDropdown").value;
     var selectedLinia = document.getElementById("liniaDropdown").value;
 
-    // Object to store available options for Stacja and Znajdz siebie based on Linia
-    var availableOptions = {
-        "A": {
-            stations: ["A1", "A2", "A3", "A4", "A5", "A6"],
-            mechanics: ["A_Mechanic1", "A_Mechanic2", "A_Mechanic3"]
-        },
-        "D": {
-            stations: ["D0", "D1", "D2", "D3", "D4"],
-            mechanics: ["D_Mechanic1", "D_Mechanic2", "D_Mechanic3"]
-        }
-    };
+    selectedMechanic = selectedMechanic.toUpperCase().replace(" ", "_");
+    selectedStation = selectedStation.toUpperCase().replace(" ", "_");
 
-    // Function to update dropdown options
-    function updateDropdown(dropdownId, options) {
-        var dropdown = document.getElementById(dropdownId);
-        dropdown.innerHTML = ""; // Clear current options
+    var baseRedirectURL = "";
 
-        options.forEach(function (option) {
-            var optionElement = document.createElement("option");
-            optionElement.value = option;
-            optionElement.text = option;
-            dropdown.appendChild(optionElement);
-        });
+    if (selectedLinia === "A") {
+        baseRedirectURL = "https://web.miniextensions.com/c9PrY0xXNNhsDJQQeLCL?preffill_Mechanic=" + selectedMechanic;
+    } else if (selectedLinia === "D") {
+        baseRedirectURL = "https://web.miniextensions.com/Bwk6PtCv1a4zbRONadUU?prefill_Mechanic=" + selectedMechanic;
     }
 
-    // Update Stacja and Znajdz siebie dropdowns based on selected Linia
-    updateDropdown("stationDropdown", availableOptions[selectedLinia].stations);
-    updateDropdown("mechanicDropdown", availableOptions[selectedLinia].mechanics);
+    var redirectionURLs = {
+        "A1": baseRedirectURL + "&prefill_Station=A1",
+        "A2": baseRedirectURL + "&prefill_Station=A2",
+        "A3": baseRedirectURL + "&prefill_Station=A3",
+        "A4": baseRedirectURL + "&prefill_Station=A4",
+        "A5": baseRedirectURL + "&prefill_Station=A5",
+        "A6": baseRedirectURL + "&prefill_Station=A6",
+        "D0": baseRedirectURL + "&prefill_Station=D0",
+        "D1": baseRedirectURL + "&prefill_Station=D1",
+        "D2": baseRedirectURL + "&prefill_Station=D2",
+        "D3": baseRedirectURL + "&prefill_Station=D3",
+        "D4": baseRedirectURL + "&prefill_Station=D4"
+    };
+
+    var selectedRedirectionURL = redirectionURLs[selectedLinia + selectedStation];
+
+    if (selectedRedirectionURL) {
+        window.location.href = selectedRedirectionURL;
+    } else {
+        alert("Please select both a mechanic, a line, and a station before clicking Go.");
+    }
 });
