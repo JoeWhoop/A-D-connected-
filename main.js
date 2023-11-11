@@ -1,38 +1,44 @@
+document.getElementById("liniaDropdown").addEventListener("change", function () {
+    var selectedLine = document.getElementById("liniaDropdown").value;
+    var mechanicDropdown = document.getElementById("mechanicDropdown");
+
+    // Clear existing options
+    mechanicDropdown.innerHTML = "";
+
+    // Mechanics for A line
+    var mechanicsA = ["Adam Radzikowski", "Anton Pratasau", "Bartosz Płoszaj", "Dominik Chojnowski", "Maciej Chwil", "Szymon Niezgoda", "Szymon Staniszewski", "Wiktor Kaczkowski"];
+
+    // Mechanics for D line
+    var mechanicsD = ["Aleks Czarnecki", "Bartosz Kędra", "Hubert Jakubowski", "Kacper Wydra", "Łukasz Chojecki", "Mateusz Wiatr", "Stanislav Tymchenko", "Weronika Szałowska", "Sebastian Widuliński", "Łukasz Markowski", "Kacper Maciejczuk", "Maciej Stępniak"];
+
+    // Populate mechanic dropdown based on the selected line
+    var mechanics = (selectedLine === "A") ? mechanicsA : mechanicsD;
+
+    mechanics.forEach(function (mechanic) {
+        var option = document.createElement("option");
+        option.value = mechanic.replace(" ", "_").toUpperCase();
+        option.label = mechanic;
+        mechanicDropdown.appendChild(option);
+    });
+});
+
 document.getElementById("goButton").addEventListener("click", function () {
     var selectedMechanic = document.getElementById("mechanicDropdown").value;
     var selectedStation = document.getElementById("stationDropdown").value;
-    var selectedLinia = document.getElementById("liniaDropdown").value;
 
     selectedMechanic = selectedMechanic.toUpperCase().replace(" ", "_");
     selectedStation = selectedStation.toUpperCase().replace(" ", "_");
 
-    var baseRedirectURL = "";
+    var baseRedirectURL = (document.getElementById("liniaDropdown").value === "A")
+        ? "https://web.miniextensions.com/c9PrY0xXNNhsDJQQeLCL?preffill_Mechanic="
+        : "https://web.miniextensions.com/Bwk6PtCv1a4zbRONadUU?prefill_Mechanic=";
 
-    if (selectedLinia === "A") {
-        baseRedirectURL = "https://web.miniextensions.com/c9PrY0xXNNhsDJQQeLCL?preffill_Mechanic=" + selectedMechanic;
-    } else if (selectedLinia === "D") {
-        baseRedirectURL = "https://web.miniextensions.com/Bwk6PtCv1a4zbRONadUU?prefill_Mechanic=" + selectedMechanic;
-    }
+    var redirectionURL = baseRedirectURL + selectedMechanic + "&prefill_Station=" + selectedStation;
 
-    var redirectionURLs = {
-        "A1": baseRedirectURL + "&prefill_Station=A1",
-        "A2": baseRedirectURL + "&prefill_Station=A2",
-        "A3": baseRedirectURL + "&prefill_Station=A3",
-        "A4": baseRedirectURL + "&prefill_Station=A4",
-        "A5": baseRedirectURL + "&prefill_Station=A5",
-        "A6": baseRedirectURL + "&prefill_Station=A6",
-        "D0": baseRedirectURL + "&prefill_Station=D0",
-        "D1": baseRedirectURL + "&prefill_Station=D1",
-        "D2": baseRedirectURL + "&prefill_Station=D2",
-        "D3": baseRedirectURL + "&prefill_Station=D3",
-        "D4": baseRedirectURL + "&prefill_Station=D4"
-    };
-
-    var selectedRedirectionURL = redirectionURLs[selectedLinia + selectedStation];
-
-    if (selectedRedirectionURL) {
-        window.location.href = selectedRedirectionURL;
+    if (selectedMechanic && selectedStation) {
+        window.location.href = redirectionURL;
     } else {
-        alert("Please select both a mechanic, a line, and a station before clicking Go.");
+        alert("Please select both a mechanic and a station before clicking Go.");
     }
 });
+A
